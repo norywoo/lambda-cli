@@ -1,0 +1,2 @@
+DOMAIN=$LAMBDA_CLI_DOMAIN
+curl -sX GET https://${DOMAIN}/dev/health | jq

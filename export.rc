@@ -1,0 +1,2 @@
+export LAMBDA_CLI_DOMAIN=$(serverless info | grep "/cli$" | cut -d '/' -f 3)
+echo $LAMBDA_CLI_DOMAIN

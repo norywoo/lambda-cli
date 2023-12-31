@@ -1,0 +1,12 @@
+DOMAIN=$LAMBDA_CLI_DOMAIN
+
+if [ -z "$1" ]
+then
+  echo "Usage: ./lambda-cli <command>"
+  echo "  e.g: ./lambda-cli 'df -h'"
+else
+  echo $1
+  echo "----------------------------------------------------------------"
+  CMD=$(echo $1 | jq -Rr @uri)
+  curl -sX GET "https://${DOMAIN}/dev/cli?cmd=${CMD}" | jq .result | sed 's!\\n!\n!g' | sed 's!^"!!'
+fi

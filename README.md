@@ -36,6 +36,56 @@ norio@nmb lambda-cli % serverless offline
 
 ### deploy to lambda
 ```
-TBD
+norio@nmb lambda-cli % serverless deploy
 ```
 
+## Show time
+
+- Before start, let us set LAMBDA_CLI_DOMAIN (you just deployed)
+
+```
+norio@nmb lambda-cli % source ./export.rc
+Running "serverless" from node_modules
+azXXXXXXXX.execute-api.us-west-1.amazonaws.com
+```
+- The domain info is intentionally blurred.
+- Health check: 
+
+```
+norio@nmb lambda-cli % source ./script/lambda/get_health.rc
+{
+  "message": "Health, welcome to the exciting Serverless world!",
+  "path": "/health",
+  "httpMethod": "GET",
+  "sourceIp": "22.33.123.123",
+  "requestTime": "31/Dec/2023:18:14:32 +0000",
+  "requestTimeEpoch": 1704046472596
+}
+```
+
+```
+norio@nmb lambda-cli % ./script/lambda/lambda-cli
+Usage: ./lambda-cli <command>
+  e.g: ./lambda-cli 'df -h'
+```
+
+```
+norio@nmb lambda-cli % ./script/lambda/lambda-cli 'echo $PATH'
+echo $PATH
+----------------------------------------------------------------
+/var/lang/bin:/usr/local/bin:/usr/bin/:/bin:/opt/bin
+```
+
+```
+norio@nmb lambda-cli % ./script/lambda/lambda-cli 'node --version'
+node --version
+----------------------------------------------------------------
+v20.9.0
+```
+
+## Teardown
+- It would be good idea to teardown your function after you play... since this experimental API has no AUTH.
+
+```
+norio@nmb lambda-cli % serverless remove
+```
