@@ -89,3 +89,6 @@ v20.9.0
 ```
 norio@nmb lambda-cli % serverless remove
 ```
+
+---
+See Also: script/lambda/README.md
